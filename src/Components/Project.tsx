@@ -12,7 +12,6 @@ interface Project {
   technology: string[];
   github?: string;
   url?: string;
-  status?: string;
 }
 
 // Updated project data with your new additions
@@ -34,7 +33,6 @@ const projects: Project[] = [
     image: "/sign.jpg",
     technology: ["Python", "TensorFlow", "MediaPipe", "OpenCV", "Keras"],
     github: "https://github.com/PremKumar/Sign-Language-Translator",
-    status: "Work in Progress",
   },
   {
     id: "2",
@@ -121,11 +119,6 @@ export default function Project() {
                 <h3 className="text-xl font-bold text-white">{project.title}</h3>
                 <p className="text-sm text-primary">View Details →</p>
               </div>
-              {project.status && (
-                <div className="absolute top-4 right-4 rounded-full bg-yellow-500/20 px-3 py-1 text-xs font-semibold text-yellow-500 backdrop-blur-sm border border-yellow-500/50 z-10">
-                  {project.status}
-                </div>
-              )}
             </motion.button>
           ))}
         </motion.div>
@@ -158,13 +151,8 @@ export default function Project() {
                     ))}
                   </div>
 
-                  <h3 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-3">
+                  <h3 className="text-2xl font-bold text-foreground mb-4">
                     {projects[parseInt(selectedId)].title}
-                    {projects[parseInt(selectedId)].status && (
-                      <span className="rounded-full bg-yellow-500/10 px-3 py-1 text-xs font-semibold text-yellow-500 border border-yellow-500/20">
-                        {projects[parseInt(selectedId)].status}
-                      </span>
-                    )}
                   </h3>
 
                   <p className="text-muted-foreground leading-relaxed">
