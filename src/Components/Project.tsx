@@ -12,6 +12,7 @@ interface Project {
   technology: string[];
   github?: string;
   url?: string;
+  status?: string;
 }
 
 // Updated project data with your new additions
@@ -23,16 +24,17 @@ const projects: Project[] = [
       "A secure full-stack application for document verification. Features encrypted uploads, real-time status tracking, and an admin dashboard. Built to solve trust issues in digital document exchange using the MERN stack.",
     image: "/verifyme.png",
     technology: ["MongoDB", "Express.js", "React.js", "Node.js", "Cloudinary"],
-    github: "https://github.com/premkumarthouda/VerifyMe", 
+    github: "https://github.com/premkumarthouda/VerifyMe",
   },
   {
     id: "1",
     title: "Real-Time Sign Language Recognition",
     description:
       "A Computer Vision system that translates hand gestures into text instantly. Utilizing Deep Learning to recognize complex ASL patterns, bridging the gap for the speech and hearing impaired.",
-    image: "/sign.jpg", 
+    image: "/sign.jpg",
     technology: ["Python", "TensorFlow", "MediaPipe", "OpenCV", "Keras"],
     github: "https://github.com/PremKumar/Sign-Language-Translator",
+    status: "Work in Progress",
   },
   {
     id: "2",
@@ -119,6 +121,11 @@ export default function Project() {
                 <h3 className="text-xl font-bold text-white">{project.title}</h3>
                 <p className="text-sm text-primary">View Details →</p>
               </div>
+              {project.status && (
+                <div className="absolute top-4 right-4 rounded-full bg-yellow-500/20 px-3 py-1 text-xs font-semibold text-yellow-500 backdrop-blur-sm border border-yellow-500/50 z-10">
+                  {project.status}
+                </div>
+              )}
             </motion.button>
           ))}
         </motion.div>
@@ -141,7 +148,7 @@ export default function Project() {
                   src={projects[parseInt(selectedId)].image}
                   className="h-auto w-full"
                 />
-                
+
                 <motion.div className="p-8">
                   <div className="mb-4 flex flex-wrap gap-2">
                     {projects[parseInt(selectedId)].technology.map((tech) => (
@@ -151,10 +158,15 @@ export default function Project() {
                     ))}
                   </div>
 
-                  <h3 className="text-2xl font-bold text-foreground mb-4">
+                  <h3 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-3">
                     {projects[parseInt(selectedId)].title}
+                    {projects[parseInt(selectedId)].status && (
+                      <span className="rounded-full bg-yellow-500/10 px-3 py-1 text-xs font-semibold text-yellow-500 border border-yellow-500/20">
+                        {projects[parseInt(selectedId)].status}
+                      </span>
+                    )}
                   </h3>
-                  
+
                   <p className="text-muted-foreground leading-relaxed">
                     {projects[parseInt(selectedId)].description}
                   </p>
