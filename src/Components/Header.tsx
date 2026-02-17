@@ -6,7 +6,7 @@ export default function Header() {
     <>
       <header className="fixed left-0 right-0 top-0 z-30 h-max py-3 ">
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4">
-          <img src="public/prem_logo.jpg" alt="PremKumar logo" className="h-10 md:h-12" />
+          <img src="/prem_logo.jpg" alt="PremKumar logo" className="h-10 md:h-12" />
           <nav className="hidden items-center gap-5 md:flex">
             <span>
               <a href="#" className="hover:text-primary">
